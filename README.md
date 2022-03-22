@@ -24,11 +24,16 @@ Telegraf requires Go version 1.17.1 , the Makefile requires GNU make.(if you kno
    vim /etc/profile
    export GOROOT=/usr/go
    export GOPATH=/usr/goWorkplace
+   export PATH=$PATH:$GOROOT/bin
    source /etc/profile
    go version
    ```
-2. Install protoc-gen-go:
+2. Install protoc and protoc-gen-go:
    ```
+   unzip protoc-3.11.4-linux-x86_64.zip
+   cd protoc-3.11.4-linux-x86_64/bin
+   mv protoc $GOPATH/go
+   protoc --version
    vim ~/.bashrc
    export GO111MODULE=on
    export GOPROXY=https://goproxy.io
