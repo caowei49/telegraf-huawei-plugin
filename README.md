@@ -72,9 +72,8 @@ Telegraf requires Go version 1.17.1 , the Makefile requires GNU make.
    in the last function ("var pathTypeMap = map[PathKey][]reflect.Type{}"),
    like this :
    var pathTypeMap = map[PathKey][]reflect.Type{
-      PathKey{ProtoPath: "huawei_debug.Debug", Version: "1.0"}: []reflect.Type{reflect.TypeOf((*huawei_debug.Debug)(nil))}, 
+      PathKey{ProtoPath: "`huawei_debug.Debug`", Version: "1.0"}: []reflect.Type{reflect.TypeOf((*`huawei_debug.Debug`)(nil))}, 
    }
-   
    
    ```
 7. Run `make` from the source directory
