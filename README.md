@@ -64,15 +64,17 @@ Telegraf requires Go version 1.17.1 , the Makefile requires GNU make.
    mkdir huawei_debug (put huawei-debug.proto in this dir (Note:the dir's name has "_",not "-"))
    cd huawei_debug
    protoc --go_out=plugins=grpc:. huawei-debug.proto
-   vim HuaweiTelemetry.go (
-   add "github.com/influxdata/telegraf/plugins/parsers/huawei_grpc_gpb/telemetry_proto/huawei_debug" in import
-   add  PathKey{ProtoPath: "huawei_debug.Debug", Version: "1.0"}: []reflect.Type{reflect.TypeOf((*huawei_debug.Debug)(nil))},
+   cd ..
+   vim HuaweiTelemetry.go 
+   
+   add "github.com/influxdata/telegraf/plugins/parsers/huawei_grpc_gpb/telemetry_proto/`huawei_debug`" in import(line 3) 
+   add  PathKey{ProtoPath: "`huawei_debug.Debug`", Version: "1.0"}: []reflect.Type{reflect.TypeOf((*`huawei_debug.Debug`)(nil))},
    in the last function ("var pathTypeMap = map[PathKey][]reflect.Type{}"),
    like this :
    var pathTypeMap = map[PathKey][]reflect.Type{
       PathKey{ProtoPath: "huawei_debug.Debug", Version: "1.0"}: []reflect.Type{reflect.TypeOf((*huawei_debug.Debug)(nil))}, 
    }
-   )
+   
    
    ```
 7. Run `make` from the source directory
